@@ -7,8 +7,8 @@ The objective is to build a data pipeline to process the data defined in the dat
 - This oject is to create a JSON output which represents a link graph between the different drugs and their respective mentions in the different PubMed publications, the scientific publications and finally the newpapers with the date associated with each of these mentions. 
 - Find the name fo one or serveral newpapers from the json produced by the data pipeline that mention the most different drugs. 
 > Two rules have to be respected:
-> A drug is considered mentioned in a PubMed article or clinical trial if it is mentioned in the title of the publication.
-> A drug is considered mentioned by a newspaper if it is mentioned in a publication issued by that newspaper.
+- A drug is considered mentioned in a PubMed article or clinical trial if it is mentioned in the title of the publication.
+- A drug is considered mentioned by a newspaper if it is mentioned in a publication issued by that newspaper.
 
 ##  Data Resources
 
@@ -45,8 +45,8 @@ The objective is to build a data pipeline to process the data defined in the dat
 
 
 ## Run & Installation Features
-- Running as a Python Project
->Command-line
+> Running as a Python Project
+- Command-line
 ```
         python main.py input/drugs.csv \
                        input/clinical_trials.csv \
