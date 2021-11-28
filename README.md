@@ -19,11 +19,12 @@ The objective is to build a data pipeline to process the data defined in the dat
 
 ## Features
 
-- Build a mvc pipeline architecture
--- app: view
--- service: controler
--- model: dao
-- Build output data which represents a link graph between the different drugs and their respective mentions in the different PubMed publications, the scientific publications and finally the newpapers with the date associated with each of these mentions
+> Build a mvc pipeline architecture
+- app: view
+- service: controler
+- model: dao
+
+> Build output data which represents a link graph between the different drugs and their respective mentions in the different PubMed publications, the scientific publications and finally the newpapers with the date associated with each of these mentions
 
 >Demo:
 
@@ -33,7 +34,7 @@ The objective is to build a data pipeline to process the data defined in the dat
 | BETAMETHASONE | Hôpitaux Universi... |yes | no | 27 April 202 |
 | ... | ... |... | ... |... | ... |
 
-- Build output data which mentions the name fo one or serveral newpapers from the json produced by the data pipeline that mention the most different drugs
+> Build output data which mentions the name fo one or serveral newpapers from the json produced by the data pipeline that mention the most different drugs
 
 >Demo:
 
@@ -53,12 +54,13 @@ The objective is to build a data pipeline to process the data defined in the dat
                        input/pubmed.json \
                        output
 ```
-- Running as a Spark Standalone job
--- Create an egg file by running python setup.py bdist_egg
--- Submit your spark application: spark-submit --py-files=drug-publication-etl-0.1.egg main.py with 5 argv
-- Running as a task which executes Spark app in the DAG in Apache Airflow with the differents choices:
--- SparkSubmitOperator
--- SparkKubernetesOperator
+> Running as a Spark Standalone job
+- Create an egg file by running python setup.py bdist_egg
+- Submit your spark application: spark-submit --py-files=drug-publication-etl-0.1.egg main.py with 5 argv
+
+> Running as a task which executes Spark app in the DAG in Apache Airflow with the differents choices:
+- SparkSubmitOperator
+- SparkKubernetesOperator
 
 >SparkSubmitOperator example:
 ```
@@ -94,12 +96,14 @@ spark_pi_monitor = SparkKubernetesSensor(
 spark_pi_submit >> spark_pi_monitor
 ```
 ## Unittest
-- Tests are implemented in tests folder using pytest framework
-- How to Run Test cases
--- Create a virtual environment: "virtualenv pyspark-venv" or "conda create -n pyspark-venv python=3.x"
--- Activate the virtual environment: "source pyspark-ven/bin/activate" or "conda activate pyspark-venv"
--- Install the test's dependency: "pip install -r requirements.txt"
--- Run the test: "pytest"
+Tests are implemented in tests folder using pytest framework
+-
+> How to Run Test cases
+
+- Create a virtual environment: "virtualenv pyspark-venv" or "conda create -n pyspark-venv python=3.x"
+- Activate the virtual environment: "source pyspark-ven/bin/activate" or "conda activate pyspark-venv"
+- Install the test's dependency: "pip install -r requirements.txt"
+- Run the test: "pytest"
 
 ## Tech
 
