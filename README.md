@@ -1,4 +1,4 @@
-# Date pipeline Project
+# Data pipeline Project
 ### _The drug publication analytis with pyspark_
 
 ## Description
