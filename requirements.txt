@@ -1,0 +1,4 @@
+pytest
+pyspark
+pytest-cov
+setuptools
