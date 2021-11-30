@@ -11,7 +11,7 @@ Comment tester via un outil de « MySQL Online »
 -	Lance le bouton « Run »
 -	Le résultat affiche dans la partie d’output
 
-![online mysql](sql/onlinemysql.png)
+![online mysql](onlinemysql.png)
 
 ## Première partie
 
