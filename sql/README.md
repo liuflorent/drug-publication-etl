@@ -30,28 +30,8 @@ insert into TRANSACTION(date,order_id,client_id,prod_id,prod_price,prod_qty) val
 insert into TRANSACTION(date,order_id,client_id,prod_id,prod_price,prod_qty) values(CAST("2020-01-02" AS DATE),3456,845,293718,10,6);
 insert into TRANSACTION(date,order_id,client_id,prod_id,prod_price,prod_qty) values(CAST("2020-01-02" AS DATE),7890,980,293718,2,0);
 
-WITH ventes_meuble AS (
-    SELECT t.client_id AS client_id, SUM(t.prod_price*t.prod_qty) AS ventes_meuble
-    FROM TRANSACTION t INNER JOIN PRODUCT_NOMENCLATURE p
-    ON t.prod_id = p.product_id
-	WHERE t.date BETWEEN CAST("2020-01-01" AS DATE) AND CAST("2020-12-31" AS DATE)
-	AND p.product_type = "MEUBLE"
-    GROUP BY t.client_id
-),
-ventes_deco AS (
-    SELECT t.client_id AS client_id, SUM(t.prod_price*t.prod_qty) AS ventes_deco
-    FROM TRANSACTION t INNER JOIN PRODUCT_NOMENCLATURE p
-    ON t.prod_id = p.product_id
-	WHERE t.date BETWEEN CAST("2020-01-01" AS DATE) AND CAST("2020-12-31" AS DATE)
-	AND p.product_type = "DECO"
-    GROUP BY t.client_id
-),
-ventes AS (
-    SELECT m.client_id as meuble_client_id, m.ventes_meuble, d.client_id as deco_client_id, d.ventes_deco
-    FROM ventes_meuble as m LEFT JOIN ventes_deco as d ON m.client_id = d.client_id
-    UNION
-    SELECT m.client_id as meuble_client_id, m.ventes_meuble, d.client_id as deco_client_id, d.ventes_deco
-    FROM ventes_meuble as m RIGHT JOIN ventes_deco as d ON m.client_id = d.client_id
-)
-SELECT IFNULL(meuble_client_id, deco_client_id) AS client_id, ventes_meuble, ventes_deco
-FROM ventes;
+SELECT t.date, sum(t.prod_price*t.prod_qty) as ventes
+FROM TRANSACTION as t
+where t.date BETWEEN CAST("2020-01-01" AS DATE) AND CAST("2020-12-31" AS DATE)
+GROUP BY t.date
+ORDER BY t.date;
